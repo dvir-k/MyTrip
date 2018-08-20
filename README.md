@@ -3,7 +3,7 @@
 ## Before build
 Install depedencies
 
-run mongod
+Run mongod
 
 Run npm start on main folder
 
