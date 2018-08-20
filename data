@@ -1,0 +1,81 @@
+ Name: String,
+    Email: {type: String, required: true, unique: true},
+    Password: {type: String, required: true},
+    Status: { type: String, enum: ['Admin', 'Guide' ,'Member'], default: 'Member'},
+    Active: Boolean,
+    Picture: {type: String }
+
+db.Users.insertMany([{'Name': 'Simon',  'Email': 'simon@mytrip.com', 'Password': '1234' ,    'Status': 'Admin',  'Active': true, 'Picture': ''},
+{ 'Name': 'Dvir',   'Email': 'dvirk@mytrip.com', 'Password': '5678',     'Status': 'Guide',  'Active': true, 'Picture': ''},
+{ 'Name': 'Daniel', 'Email': 'daniel@gmail.com', 'Password': '9101112',  'Status': 'Member', 'Active': true, 'Picture': ''},
+{ 'Name': 'tsvi',   'Email': 'tsvi@gmail.com',   'Password': '13141516', 'Status': 'Member', 'Active': true, 'Picture': ''},
+{ 'Name': 'Hillel', 'Email': 'hillel@mgmail.com','Password': '17181920', 'Status': 'Member', 'Active': true, 'Picture': ''}])
+
+Name: {Type: String, unique: true },
+    Title: String,
+    Active: Boolean,
+    {}
+
+db.Rooms.insertMany([{Name: 'Sydney', Description: 'Port Jackson with it is opera house will not have any secret for you', Active: true},
+{Name: 'Paris', Description: 'Tour Eiffel, Champs Elysee a.k.a la plus belle avenue du monde', Active: true},
+{Name: 'Jerusalem', Description: 'Center of the world, glimpse into the old city and western wall', Active: true},
+{Name: 'San Jose', Description: 'Discover the city next to the silicon valley', Active: true}])
+
+
+
+User: String,
+    Name: {type: String, unique: true},
+    Status: {type: String, enum: ['Admin', 'Member', 'Banned', 'Pending']},
+    Active: Boolean
+
+db.roomUsers.insertMany([{'User': 'Simon', 'Name': 'Sydney', 'Status': 'Admin', 'Active': true},
+{'User': 'Simon','Name': 'San Jose', 'Status': 'Admin',   'Active' : true},
+{'User': 'Simon','Name': 'Paris',    'Status': 'Admin',   'Active' : true},
+{'User': 'Dvir', 'Name': 'Paris',    'Status': 'Member',  'Active' : true},
+{'User': 'Dvir', 'Name': 'San Jose', 'Status': 'Member',  'Active' : true},
+{'User': 'Dvir', 'Name': 'Sydney',   'Status': 'Pending', 'Active' : true}])
+
+Sender: String,    
+    Room: String,
+    Content: String,
+    Like: Number,
+    Dislike: Number,
+    Date: Date,
+    Active: Boolean
+
+db.Messages.insertMany([{'Sender': 'Simon', 'Room': 'Paris', 'Content': "Welcome to this group, share your best plan all around the most visited city of the world !", 'Like': 3, 'Dislike': 0, 'Date': Date() , 'Active': true},
+{'Sender': 'Simon', 'Room': 'Paris', 'Content':     "Please be polite and respect everyone otherwise you will be banned", 'Like': 3, 'Dislike': 0, 'Date': Date() ,'Active': true},
+{'Sender': 'Simon', 'Room': 'Sydney', 'Content':    "Would like to go there what is your best plan ?", 'Like': 3, 'Dislike': 0, 'Date': Date() ,'Active': true},
+{'Sender': 'Dvir', 'Room': 'Paris', 'Content':      "Fantastic city, came there 3 years ago but i still help", 'Like': 3, 'Dislike': 0, 'Date': Date() ,'Active': true},
+{'Sender': 'Dvir', 'Room': 'San Jose', 'Content':   "Can you please share your plan with me :)", 'Like': 1, 'Dislike': 0, 'Date': Date() ,'Active': true},
+{'Sender': 'Dvir', 'Room': 'San Jose', 'Content':   "Is anyone here ?", 'Like': 0, 'Dislike': 6, 'Date': Date() ,'Active': true},
+{'Sender': 'Hillel', 'Room': 'San Jose', 'Content': "Please be patient", 'Like': 3, 'Dislike': 0, 'Date': Date() ,'Active': true},
+{'Sender': 'Hillel', 'Room': 'Paris', 'Content':    "Anyone has a voucher for the Eiffel Tour", 'Like': 3, 'Dislike': 0, 'Date': Date() ,'Active': true},
+{'Sender': 'Hillel', 'Room': 'Sydney', 'Content':   "Please be polite and respect everyone otherwise you will be banned", 'Like': 3, 'Dislike': 0, 'Date': Date() ,'Active': true}])
+
+
+Name: {type: String, required: true, unique: true },
+    Description: String, 
+    Active: Boolean,
+    Picture: String,
+
+db.RoomsV2.insertMany([{'Name': 'Paris', 
+'Description': "Paris monument-lined boulevards, museums, classical bistros and boutiques are enhanced by a new wave of multimedia galleries, creative wine bars, design shops and tech start-ups.",
+'Active': true, 'Picture': '../../../assets/img/Paris.jpg'},
+{'Name': 'Sydney', 'Description': "Enjoy Sydneys natural beauty, from unspoilt beaches to public gardens and, of course, the sparkling harbour, before discovering its thriving restaurants and markets. Top it off with a trip to the Blue Mountains, a popular excursion among locals.",
+'Active': true, 'Picture': '../../../assets/img/Sydney.jpg'},
+{'Name': 'New York', 'Description': "The city that never sleep, Central Park the fifth avenue and much more", 'Active': true, 'Picture': '../../../assets/img/NYC.jpeg'},
+{'Name': 'Los Angeles', 'Description': "The city that never sleep, Central Park the fifth avenue and much more", 'Active': true, 'Picture': '../../../assets/img/LA.jpeg'},
+{'Name': 'San Francisco', 'Description': "The city that never sleep, Central Park the fifth avenue and much more", 'Active': true, 'Picture': '../../../assets/img/SF.jpg'},
+{'Name': 'Jerusalem', 'Description': "The city that never sleep, Central Park the fifth avenue and much more", 'Active': true, 'Picture': '../../../assets/img/Jerusalem.jpg'}]);
+
+Email: String,
+    Room: String,
+    Active: Boolean
+
+db.Carts.insertMany([{'Email': 'simon@mytrip.com', 'Room': 'Sydney', 'Active': true},
+{'Email': 'simon@mytrip.com', 'Room': 'Los Angeles', 'Active': true},
+{'Email': 'dvirk@mytrip.com', 'Room': 'Sydney', 'Active': true},
+{'Email': 'dvirk@mytrip.com', 'Room': 'San Jose', 'Active': true},
+{'Email': 'Bibi@gmail.com', 'Room': 'New York', 'Active': true}])
+
